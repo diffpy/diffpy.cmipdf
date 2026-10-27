@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Release notes &mdash; diffpy.cmipdf 0.1.0 documentation</title>
+  <title>Release notes &mdash; diffpy.cmipdf 0.1.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=38b66d78"></script>
+      <script src="_static/documentation_options.js?v=91f6191e"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -46,10 +46,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/diffpy.cmipdf.html">Package API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">0.1.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -82,7 +82,35 @@
   <section id="release-notes">
 <span id="index-0"></span><h1>Release notes<a class="headerlink" href="#release-notes" title="Link to this heading"></a></h1>
 <section id="id1">
-<h2>0.1.0<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>0.1.1<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p><strong>Added:</strong></p>
+<ul class="simple">
+<li><p>Examples in <code class="docutils literal notranslate"><span class="pre">docs/examples</span></code>, ported from the <code class="docutils literal notranslate"><span class="pre">diffpy.srfit</span></code> PDF examples: <code class="docutils literal notranslate"><span class="pre">crystalpdf</span></code>, <code class="docutils literal notranslate"><span class="pre">simplepdf</span></code>, <code class="docutils literal notranslate"><span class="pre">parallel_refinement</span></code>, <code class="docutils literal notranslate"><span class="pre">crystalpdfobjcryst</span></code>, <code class="docutils literal notranslate"><span class="pre">crystalpdftwophase</span></code>, <code class="docutils literal notranslate"><span class="pre">simplepdftwophase</span></code>, <code class="docutils literal notranslate"><span class="pre">crystalpdftwodata</span></code>, <code class="docutils literal notranslate"><span class="pre">crystalpdfall</span></code>, <code class="docutils literal notranslate"><span class="pre">nppdfcrystal</span></code>, <code class="docutils literal notranslate"><span class="pre">nppdfobjcryst</span></code> and <code class="docutils literal notranslate"><span class="pre">coreshellnp</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diffpy.cmistructure</span></code> as a dependency.</p></li>
+</ul>
+<p><strong>Changed:</strong></p>
+<ul class="simple">
+<li><p>Replace the placeholder description in the README with a description of the package.</p></li>
+<li><p>Rename the parameters of the characteristic functions <code class="docutils literal notranslate"><span class="pre">spherical_particle</span></code>, <code class="docutils literal notranslate"><span class="pre">spheroidal_particle</span></code>, <code class="docutils literal notranslate"><span class="pre">lognormal_spherical_particle</span></code>, <code class="docutils literal notranslate"><span class="pre">sheet_particle</span></code>, and <code class="docutils literal notranslate"><span class="pre">shell_particle</span></code> to match <code class="docutils literal notranslate"><span class="pre">diffpy.srfit.pdf.characteristicfunctions</span></code>.</p></li>
+<li><p>Issue a <code class="docutils literal notranslate"><span class="pre">RuntimeWarning</span></code> once per process when a characteristic function is given non-physical input and returns zero.</p></li>
+<li><p>Use the same license as <code class="docutils literal notranslate"><span class="pre">diffpy.srfit</span></code>: <code class="docutils literal notranslate"><span class="pre">LICENSE.rst</span></code>, the documentation License page and the <code class="docutils literal notranslate"><span class="pre">License</span> <span class="pre">::</span> <span class="pre">Free</span> <span class="pre">To</span> <span class="pre">Use</span> <span class="pre">But</span> <span class="pre">Restricted</span></code> classifier now match it.</p></li>
+</ul>
+<p><strong>Fixed:</strong></p>
+<ul class="simple">
+<li><p>Read the PDF metadata in the data file header in <code class="docutils literal notranslate"><span class="pre">PDFContribution.load_data</span></code>, which used the generic <code class="docutils literal notranslate"><span class="pre">ProfileParser</span></code> and lost the scattering type and qmax from NOMAD files with a free-text instrument comment.</p></li>
+<li><p>The README now gives the command-line program as <code class="docutils literal notranslate"><span class="pre">diffpy-cmipdf</span></code>, which is its installed name, instead of <code class="docutils literal notranslate"><span class="pre">diffpy.cmipdf</span></code>.</p></li>
+<li><p>Require <code class="docutils literal notranslate"><span class="pre">diffpy.srfit</span></code> 3.4.0 or later. Older versions lack the methods diffpy.cmipdf calls, so installing it next to <code class="docutils literal notranslate"><span class="pre">diffpy.srfit</span></code> 3.3.1 failed at run time.</p></li>
+<li><p>Build <code class="docutils literal notranslate"><span class="pre">diffpy.cmistructure</span></code> parameter sets in <code class="docutils literal notranslate"><span class="pre">set_structure</span></code> and <code class="docutils literal notranslate"><span class="pre">add_structure</span></code>, and accept them in <code class="docutils literal notranslate"><span class="pre">set_structure_from_parset</span></code> and <code class="docutils literal notranslate"><span class="pre">add_structure_from_parset</span></code>. These used <code class="docutils literal notranslate"><span class="pre">diffpy.srfit.structure</span></code> and raised <code class="docutils literal notranslate"><span class="pre">AttributeError:</span> <span class="pre">stru</span></code> for a <code class="docutils literal notranslate"><span class="pre">diffpy.cmistructure</span></code> parameter set.</p></li>
+</ul>
+<p><strong>Removed:</strong></p>
+<ul class="simple">
+<li><p>The scikit-package template pages (Getting started, the example table snippet and the logo) from the documentation.</p></li>
+<li><p>Support for Python 3.11. <code class="docutils literal notranslate"><span class="pre">diffpy.srfit</span></code> 3.4.0, which diffpy.cmipdf requires, needs Python 3.12 or later.</p></li>
+<li><p>Remove the non-functional <code class="docutils literal notranslate"><span class="pre">SASCF</span></code> calculator from <code class="docutils literal notranslate"><span class="pre">characteristicfunctions</span></code>. SAS characteristic functions now live in <code class="docutils literal notranslate"><span class="pre">diffpy.cmisas</span></code>.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>0.1.0<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p><strong>Added:</strong></p>
 <ul class="simple">
 <li><p>Add source code from <code class="docutils literal notranslate"><span class="pre">diffpy.srfit.pdf</span></code> to <code class="docutils literal notranslate"><span class="pre">diffpy.cmipdf</span></code>.</p></li>
